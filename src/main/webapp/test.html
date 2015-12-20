@@ -1,0 +1,35 @@
+var base_url = 'http://localhost:8080/germinate-navigator/api/center';
+
+function example()
+{
+    var response = "";
+    var form_data = {
+    username: username,
+    password: password
+};
+
+$.ajax({
+type: "GET",
+url: base_url,
+data: form_data,
+success: function(response)
+{
+
+console.log(response);
+var json_obj = $.parseJSON(response);//parse JSON
+var output="
+<ul>";
+    for (var i in json_obj)
+    {
+    output+="
+    <li>" + json_obj[i].Language + ", " + json_obj[i].ID + "</li>
+    ";
+    }
+    output+="
+</ul>";
+
+$('span').html(output);
+},
+dataType: "json"//set to JSON
+})
+}

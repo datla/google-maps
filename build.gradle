@@ -1,0 +1,15 @@
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'war'
+
+task copySpecFiles(type: Copy) {
+	println "Copying $project.name ...."
+	def srcDir = "C:/Projects/GWS/gmap-gui/build/libs"
+	def destDir = "C:/Servers/tomee-jaxrs-1.7.1-tm-0.0.1.snapshot/webapps/"
+	copy{
+		from(srcDir)
+	   	into(destDir)
+	   	include('*.war')
+	}
+	println "Done copying $project.name ."
+}
